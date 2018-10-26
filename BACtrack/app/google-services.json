@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "351089659788",
+    "firebase_url": "https://bactrack-52c10.firebaseio.com",
+    "project_id": "bactrack-52c10",
+    "storage_bucket": "bactrack-52c10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351089659788:android:85b1d7eb89fe281e",
+        "android_client_info": {
+          "package_name": "com.pervasivecomputing.project.bactack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351089659788-d7tgm6boiggd2u1kg18lq87vh1tuvlnp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pervasivecomputing.project.bactack",
+            "certificate_hash": "74a673f4fb8cc69958772c8db6e200584b872845"
+          }
+        },
+        {
+          "client_id": "351089659788-djapauo68nniejlilmvpel1aveeotl95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6xmIwVw5TEWbVl4GYwypE4V-GVa4Libg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351089659788-djapauo68nniejlilmvpel1aveeotl95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

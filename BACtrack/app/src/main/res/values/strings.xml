@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BACtrack</string>
+    <string name="check_in">check-in</string>
+    <string name="share_loc">share</string>
+    <string name="activity">activity</string>
+    <string name="CheckScreen">Check-in</string>
+    <string name="location">Location</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="submit">Submit</string>
+</resources>
