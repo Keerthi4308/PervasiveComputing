@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Random;
 
 
 public class CheckIn extends AppCompatActivity {
@@ -34,21 +35,25 @@ public class CheckIn extends AppCompatActivity {
 
     public void onSubmit(View view) {
 
-        mStorageRef= FirebaseDatabase.getInstance().getReference("https://bactrack-52c10.firebaseio.com/");        //.child("Wherever you want to store this data");
+        mStorageRef= FirebaseDatabase.getInstance().getReference();        //.child("Wherever you want to store this data");
         location = findViewById(R.id.field1);
         time = findViewById(R.id.field2);
         date = findViewById(R.id.field3);
+//        int userno = Random.nextInt(30);
+//        String myname="user"+userno;
         String myloc  = location.getText().toString();
-        String mytime = location.getText().toString();
-        String mydate = location.getText().toString();
+        String mytime = time.getText().toString();
+        String mydate = date.getText().toString();
+
         if(!TextUtils.isEmpty(myloc)&&!TextUtils.isEmpty(mytime)&&!TextUtils.isEmpty(mydate))
         {
            //create a map
-            HashMap< String,String> hm = new HashMap< String,String>();
+            HashMap< String,String> hm = new HashMap();
+//            hm.put("name",mynam)
             hm.put("location", myloc);
             hm.put("time", mytime);
             hm.put("date", mydate);
-            mStorageRef.setValue(hm);
+            mStorageRef.child("checkin").push().setValue(hm);
 
             mStorageRef.addValueEventListener(new ValueEventListener() {
                 @Override

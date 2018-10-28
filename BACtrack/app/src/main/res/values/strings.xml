@@ -8,4 +8,7 @@
     <string name="time">Time</string>
     <string name="date">Date</string>
     <string name="submit">Submit</string>
+    <string name="display_name">friend_name</string>
+    <string name="display_location">friend_location</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

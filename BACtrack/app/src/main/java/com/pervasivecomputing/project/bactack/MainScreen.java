@@ -21,4 +21,14 @@ public class MainScreen extends AppCompatActivity {
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    public void OnActivity(View view){
+        Intent intent = new Intent(this, Others.class);
+        startActivity(intent);
+    }
+
+    public void OnShare(View view){
+        Intent intent = new Intent(this, Share.class);
+        startActivity(intent);
+    }
 }

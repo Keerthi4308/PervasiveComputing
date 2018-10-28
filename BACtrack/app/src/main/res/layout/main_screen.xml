@@ -24,6 +24,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/share_loc"
+        android:onClick="OnShare"
         android:src="?android:attr/actionModeShareDrawable"
         app:layout_constraintStart_toEndOf="@+id/button5"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +36,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/activity"
+        android:onClick="OnActivity"
         android:src="?android:attr/actionModeFindDrawable"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="parent" />
