@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView_top_left"
+        android:layout_width="@dimen/small_background_img_size"
+        android:layout_height="@dimen/small_background_img_size"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="25dp"
+        android:alpha="0.14"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        app:srcCompat="@mipmap/smashicon_pint" />
+
+    <ImageView
+        android:id="@+id/imageView_bottom_left"
+        android:layout_width="@dimen/small_background_img_size"
+        android:layout_height="@dimen/small_background_img_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageView_center_left"
+        android:layout_marginBottom="31dp"
+        android:alpha="0.14"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        app:srcCompat="@mipmap/smashicon_pint" />
+
+    <ImageView
+        android:id="@+id/imageView_top_right"
+        android:layout_width="@dimen/small_background_img_size"
+        android:layout_height="@dimen/small_background_img_size"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageView_top_left"
+        android:layout_marginEnd="42dp"
+        android:alpha="0.14"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        app:srcCompat="@mipmap/smashicon_glass" />
+
+    <ImageView
+        android:id="@+id/imageView_bottom_right"
+        android:layout_width="@dimen/small_background_img_size"
+        android:layout_height="@dimen/small_background_img_size"
+        android:layout_alignStart="@+id/imageView_center_right"
+        android:layout_alignTop="@+id/imageView_bottom_left"
+        android:alpha="0.14"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        app:srcCompat="@mipmap/smashicon_glass" />
+
+    <ImageView
+        android:id="@+id/imageView_center_left"
+        android:layout_width="@dimen/small_background_img_size"
+        android:layout_height="@dimen/small_background_img_size"
+        android:layout_alignStart="@+id/imageView_top_left"
+        android:layout_alignTop="@+id/imageView_center_right"
+        android:alpha="0.14"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        app:srcCompat="@mipmap/cheers" />
+
+    <ImageView
+        android:id="@+id/imageView_center_right"
+        android:layout_width="@dimen/small_background_img_size"
+        android:layout_height="@dimen/small_background_img_size"
+        android:layout_alignStart="@+id/imageView_top_right"
+        android:layout_centerVertical="true"
+        android:alpha="0.14"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        app:srcCompat="@mipmap/holiday" />
+
+</RelativeLayout>

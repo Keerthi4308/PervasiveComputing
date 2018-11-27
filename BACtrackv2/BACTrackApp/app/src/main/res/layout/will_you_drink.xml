@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_holiday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.4"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        android:paddingBottom="190dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        app:srcCompat="@mipmap/cheers" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/WILL_YOU_DRINK"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/button_car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="74dp"
+        android:layout_marginEnd="17dp"
+        android:layout_toStartOf="@+id/button_walk"
+        android:background="@drawable/rounded_button_white_border"
+        android:onClick="will_drink"
+        android:text="@string/YES"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button_walk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_car"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button_white_border"
+        android:onClick="maybe_will_drink"
+        android:text="@string/MAYBE"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/button_friends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_walk"
+        android:layout_alignBottom="@+id/button_walk"
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/button_walk"
+        android:background="@drawable/rounded_button_white_border"
+        android:onClick="will_not_drink"
+        android:text="@string/NO"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
