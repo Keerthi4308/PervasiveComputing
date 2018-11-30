@@ -34,7 +34,7 @@
     <string name="BACKGROUND_IMAGE">Background Image</string>
     <string name="START">Start</string>
     <string name="START_PROCESS_MESSAGE">Make sure to wait at least 20 minutes since your last drink for accurate results.</string>
-    <string name="EMPTY_STRING"/>
+    <string name="EMPTY_STRING" />
     <string name="WELCOME_MESSAGE">Welcome to\nBACtrack!</string>
     <string name="WELCOME_BODY">Let’s make sure we get you home safely every time.</string>
     <string name="OR">OR</string>
@@ -81,5 +81,22 @@
         <item quantity="one">One location reported</item>
         <item quantity="other">%d locations reported</item>
     </plurals>
+    <string name="ask_for_circles">Do you like to join/add circles?</string>
+    <string name="ASK_FOR_CIRCLES">Do you like to join/add circles?</string>
+    <string name="JOIN_CIRCLES">DO you like to add/join circles?</string>
+    <string name="CIRCLE_TITLE">Add/Join Circles</string>
+    <string name="title_activity_new_circle">NewCircle</string>
+    <string name="circle_name">Enter Name</string>
+    <string name="location">Enter Location</string>
+    <string name="date">Enter event date...</string>
+    <string name="create_circle">Create</string>
+    <string name="NewCircle">New Circle</string>
+    <string name="USERID">Enter your email id</string>
+    <string name="notify">Notify</string>
+    <string name="bookcab">BookCab</string>
+    <string name="share">Share</string>
+    <string name="display_Date">Date</string>
+    <string name="display_Location">Location</string>
+    <string name="join">Join</string>
 
 </resources>

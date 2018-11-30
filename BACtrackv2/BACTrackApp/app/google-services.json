@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "261065463221-b6r0et4n601gdik2imbvebnk33eh6pne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pervasive_computing.bactrackappv2",
+            "certificate_hash": "74a673f4fb8cc69958772c8db6e200584b872845"
+          }
+        },
+        {
           "client_id": "261065463221-2a12oj63jnpj3eba7944s2g06g7ra9hj.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261065463221-2a12oj63jnpj3eba7944s2g06g7ra9hj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

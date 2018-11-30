@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.pervasive_computing.bactrackappv2">
+    package="com.pervasive_computing.bactrackappv2">
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name=".GlobalProperties"
@@ -22,50 +22,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContactPicker"/>
-        <activity android:name=".ListContacts"/>
+        <activity android:name=".ContactPicker" />
+        <activity android:name=".ListContacts" />
 
         <!-- android launch mode Notification Manager  If activity is already running notification intent will be sent to this -->
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop">
-
-        </activity>
-        <activity android:name=".WillYouDrink"/>
-        <activity android:name=".HowGoingHome"/>
-        <activity android:name=".InitiateActivity"/>
-        <activity android:name=".FirstPageActivity"/>
-        <activity android:name=".BreatheInActivity"/>
-        <activity android:name=".BreatheOutActivity"/>
-        <activity android:name=".BlowActivity"/>
-        <activity android:name=".GreenActivity"/>
-        <activity android:name=".RedActivity"/>
-        <activity android:name=".YellowActivity"/>
-        <activity android:name=".RestartActivity"/>
+            android:launchMode="singleTop" />
+        <activity android:name=".WillYouDrink" />
+        <activity android:name=".HowGoingHome" />
+        <activity android:name=".InitiateActivity" />
+        <activity android:name=".FirstPageActivity" />
+        <activity android:name=".BreatheInActivity" />
+        <activity android:name=".BreatheOutActivity" />
+        <activity android:name=".BlowActivity" />
+        <activity android:name=".GreenActivity" />
+        <activity android:name=".RedActivity" />
+        <activity android:name=".YellowActivity" />
+        <activity android:name=".RestartActivity" />
 
         <service
             android:name=".LocationService"
-            android:process=":location_service"/>
+            android:process=":location_service" />
         <service
             android:name=".LocationUpdatesIntentService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <receiver
             android:name=".LocationUpdatesBroadcastReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.android.gms.location.sample.backgroundlocationupdates.LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES"/>
+                <action android:name="com.google.android.gms.location.sample.backgroundlocationupdates.LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES" />
             </intent-filter>
         </receiver>
 
         <activity android:name=".LogInActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ViewCircles" />
+        <activity android:name=".NewCircle" />
+        <activity android:name=".ExistingCircle"></activity>
     </application>
 
 </manifest>

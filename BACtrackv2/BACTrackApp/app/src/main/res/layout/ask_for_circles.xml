@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:alpha="0.4"
+        android:contentDescription="@string/BACKGROUND_IMAGE"
+        android:paddingBottom="190dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        app:srcCompat="@mipmap/friends" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="183dp"
+        android:text="@string/ASK_FOR_CIRCLES"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/join_circles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="79dp"
+        android:layout_marginStart="81dp"
+        android:background="@drawable/rounded_button_white_border"
+        android:text="@string/YES"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/no_join_circles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/join_circles"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/rounded_button_white_border"
+        android:text="@string/NO"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

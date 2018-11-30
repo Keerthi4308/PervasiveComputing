@@ -116,7 +116,8 @@ public class SplashActivity extends BaseActivity implements GoogleApiClient.Conn
 
     public void get_started(View view) {
         myRef.child(user.getUid().toString()).push().setValue(new LogSnip("User starting Going Out Setup"));
-        startActivity(new Intent(getApplicationContext(), WillYouDrink.class));
+        //startActivity(new Intent(getApplicationContext(), WillYouDrink.class));
+        startActivity(new Intent(getApplicationContext(), ViewCircles.class));
         finish();
     }
 
