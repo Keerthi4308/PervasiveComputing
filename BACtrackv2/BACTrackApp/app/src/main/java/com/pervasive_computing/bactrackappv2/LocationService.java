@@ -39,7 +39,7 @@ public class LocationService extends Service {
     public void onCreate() {
         Log.e(TAG, "onCreate");
         initializeLocationManager();
-        clocation=(TextView) clocation.findViewById(R.id.showlocation);
+        //clocation=(TextView) clocation.findViewById(R.id.showlocation);
         try {
             mLocationManager.requestLocationUpdates(
                     LocationManager.NETWORK_PROVIDER, LOCATION_INTERVAL, LOCATION_DISTANCE,

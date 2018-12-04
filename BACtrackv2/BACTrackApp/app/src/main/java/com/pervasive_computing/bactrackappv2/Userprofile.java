@@ -1,35 +1,65 @@
 package com.pervasive_computing.bactrackappv2;
 
+
+/*
+  Created by Keerthi on 11/27/2018.
+ */
+
 class Userprofile {
 
-    public String BAC;
-    public String Address;
-    public String display;
+    public String memberBAC;
+    public String address;
+    public String reachedHome; //Reached home or not
+    public String alert; //indicate other members that help is required
     public String fullName;
-    public String phone;
+    public Long phone;
 
-    public String getBAC() {
-        return BAC;
+
+    public Userprofile(){
+
     }
 
-    public void setBAC(String BAC) {
-        this.BAC = BAC;
+    public Userprofile(String memberBAC, String address,String reachedHome,String alert, String fullName,Long phone) {
+        this.memberBAC = memberBAC;
+        this.address = address;
+        this.reachedHome=reachedHome;
+        this.alert = alert;
+        this.fullName = fullName;
+        this.phone = phone;
     }
+
+    public String getMemberBAC() {
+        return memberBAC;
+    }
+
+    public void setMemberBAC(String memberBAC) {
+        this.memberBAC = memberBAC;
+    }
+
+    public String getReachedHome() {
+        return reachedHome;
+    }
+
+    public void setReachedHome(String reachedHome) {
+        this.reachedHome = reachedHome;
+    }
+
+
+    public String getAlert() {
+        return alert;
+    }
+
+    public void setAlert(String alert) {
+        this.alert = alert;
+    }
+
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
-    }
-
-    public String getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(String display) {
-        this.display = display;
+        address = address;
     }
 
     public String getFullName() {
@@ -40,11 +70,11 @@ class Userprofile {
         this.fullName = fullName;
     }
 
-    public String getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

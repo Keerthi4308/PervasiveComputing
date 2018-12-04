@@ -86,17 +86,18 @@
     <string name="JOIN_CIRCLES">DO you like to add/join circles?</string>
     <string name="CIRCLE_TITLE">Add/Join Circles</string>
     <string name="title_activity_new_circle">NewCircle</string>
-    <string name="circle_name">Enter Name</string>
-    <string name="location">Enter Location</string>
-    <string name="date">Enter event date...</string>
+    <string name="circle_name">Enter circle  name</string>
+    <string name="location">Enter event location</string>
+    <string name="date">Enter event date</string>
     <string name="create_circle">Create</string>
     <string name="NewCircle">New Circle</string>
-    <string name="USERID">Enter your email id</string>
+    <string name="USERID">Enter your user id</string>
     <string name="notify">Notify</string>
     <string name="bookcab">BookCab</string>
     <string name="share">Share</string>
     <string name="display_Date">Date</string>
     <string name="display_Location">Location</string>
     <string name="join">Join</string>
+    <string name="askvolunteer">Do you like to join as Volunteer?</string>
 
 </resources>

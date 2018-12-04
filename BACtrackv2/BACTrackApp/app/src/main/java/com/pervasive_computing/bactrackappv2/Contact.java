@@ -2,6 +2,7 @@ package com.pervasive_computing.bactrackappv2;
 
 /*
   Created by Pratik on 11/05/2017.
+
  */
 
 class Contact {

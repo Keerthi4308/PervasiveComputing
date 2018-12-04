@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="111dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/askvolunteer"
+        android:textSize="@dimen/text_medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/yes_volun"
+        android:layout_width="66dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/rounded_button_white_border"
+        android:text="@string/YES"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/no_volun"
+        android:layout_width="66dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/rounded_button_white_border"
+        android:text="@string/NO"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.LinearLayout>
