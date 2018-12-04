@@ -94,11 +94,12 @@
 
     <ListView
         android:id="@+id/members_view"
-        android:layout_width="374dp"
+        android:layout_width="364dp"
         android:layout_height="335dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="104dp"
         android:textColor="@android:color/white"
+        android:layout_marginLeft="8px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

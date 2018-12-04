@@ -1,11 +1,13 @@
 package com.pervasive_computing.bactrackappv2;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -19,8 +21,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.AbstractQueue;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 public class ExistingCircle extends AppCompatActivity {
 
@@ -30,10 +35,12 @@ public class ExistingCircle extends AppCompatActivity {
     private TextView display_date;
     private DatabaseReference mStorageRef;//mStorageRef2;
     private ArrayList<String> dataModel;
+   // private HashMap<String,String> dataModel;
     private String PRIMARY_KEY;
     ListView listView;
+    private String BAClevel="0.0";
     private   ValueEventListener oneTimeListener;
-    private  ChildEventListener constantListener;
+    private  ChildEventListener constantListener,constantBACListener;
 
 
     @Override
@@ -50,7 +57,8 @@ public class ExistingCircle extends AppCompatActivity {
         Circle_name=(TextView)findViewById(R.id.circlename);
         display_location=(TextView)findViewById(R.id.location);
         display_date=(TextView)findViewById(R.id.date);
-        dataModel = new ArrayList<String>();
+        //dataModel = new HashMap<>();
+        dataModel=new ArrayList<>();
         mStorageRef = FirebaseDatabase.getInstance().getReference();
         //.child("users").child("1");
        // mStorageRef2 = FirebaseDatabase.getInstance().getReference().child("members").child("1");
@@ -86,10 +94,14 @@ public class ExistingCircle extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                String name = dataSnapshot.getValue(String.class);
-                dataModel.add(name);
+                String UserId = dataSnapshot.getValue(String.class);
+                //fetch BAC from dataset
+                mStorageRef.child("users").child(UserId).addChildEventListener(constantBACListener);
+                dataModel.add(UserId);
                 ListAdapter listAdapter = new ArrayAdapter<String>(ExistingCircle.this, R.layout.simple_list_item, dataModel);
                 listView.setAdapter(listAdapter);
+
+
 
             }
 
@@ -114,10 +126,62 @@ public class ExistingCircle extends AppCompatActivity {
             }
         };
 
+        constantBACListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                Userprofile up = dataSnapshot.getValue(Userprofile.class);
+                //fetch BAC from dataset
+                BAClevel =up.BAC;
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+
         mStorageRef.child("circles").child(PRIMARY_KEY).addValueEventListener(oneTimeListener);
 
         mStorageRef.child("members").child(PRIMARY_KEY).addChildEventListener(constantListener);
+
+
     }
+    public void onClickJoin(View view) {
+
+        mStorageRef.child("members").child(PRIMARY_KEY).push().setValue(useremail);
+        startActivity(new Intent(getApplicationContext(), ViewCircles.class));
+
+    }
+
+    public void onClickShare(View view) {
+
+        startActivity(new Intent(getApplicationContext(), LocationService.class));
+
+    }
+    public void onClickBook(View view){
+
+        //redirect to https://m.uber.com/?client_id=<CLIENT_ID>
+
+    }
+
 
     @Override
     public void onStop() {
