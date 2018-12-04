@@ -1,15 +1,25 @@
 package com.pervasive_computing.bactrackappv2;
 
+/*
+  Created by Keerthi on 11/27/2018.
+ */
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -19,8 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class ExistingCircle extends AppCompatActivity {
 
@@ -29,11 +39,15 @@ public class ExistingCircle extends AppCompatActivity {
     private TextView display_location;
     private TextView display_date;
     private DatabaseReference mStorageRef;//mStorageRef2;
-    private ArrayList<String> dataModel;
+   //private ArrayList<String> dataModel;
+    private HashMap<String,String> dataModel;
     private String PRIMARY_KEY;
     ListView listView;
-    private   ValueEventListener oneTimeListener;
-    private  ChildEventListener constantListener;
+    String name="test";
+    String BAClevel="0";
+    String memberID=null;
+    private   ValueEventListener circleDetailsListener,each_memberListener;
+    private  ChildEventListener generate_membersListener;
 
 
     @Override
@@ -50,7 +64,8 @@ public class ExistingCircle extends AppCompatActivity {
         Circle_name=(TextView)findViewById(R.id.circlename);
         display_location=(TextView)findViewById(R.id.location);
         display_date=(TextView)findViewById(R.id.date);
-        dataModel = new ArrayList<String>();
+        dataModel = new HashMap<>();
+        //dataModel=new ArrayList<>();
         mStorageRef = FirebaseDatabase.getInstance().getReference();
         //.child("users").child("1");
        // mStorageRef2 = FirebaseDatabase.getInstance().getReference().child("members").child("1");
@@ -59,7 +74,9 @@ public class ExistingCircle extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-       oneTimeListener=new ValueEventListener() {
+        //To update location and date on current Circle screen
+
+       circleDetailsListener=new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 CircleDetails cinfo = dataSnapshot.getValue(CircleDetails.class);
@@ -82,14 +99,27 @@ public class ExistingCircle extends AppCompatActivity {
             }
         };
 
-        constantListener = new ChildEventListener() {
+       //To update members list on current circle
+
+        generate_membersListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                String name = dataSnapshot.getValue(String.class);
-                dataModel.add(name);
-                ListAdapter listAdapter = new ArrayAdapter<String>(ExistingCircle.this, R.layout.simple_list_item, dataModel);
-                listView.setAdapter(listAdapter);
+                memberID = dataSnapshot.getValue(String.class);
+
+                //get member details
+                mStorageRef.child("user profile").child(memberID).addValueEventListener(each_memberListener);
+                Log.d("Jey", dataModel.toString());
+//                dataModel.put(UserId,other details);
+//
+//                //dataModel.add(UserId);
+//                ListAdapter listAdapter = new ArrayAdapter<String>(ExistingCircle.this, R.layout.simple_list_item, dataModel);
+//                listView.setAdapter(listAdapter);
+
+//                ListAdapter listAdapter = new CustomMemberListAdapter(ExistingCircle.this,R.layout.member_list_item,dataModel);
+//                listView.setAdapter(listAdapter);
+
+
 
             }
 
@@ -114,9 +144,95 @@ public class ExistingCircle extends AppCompatActivity {
             }
         };
 
-        mStorageRef.child("circles").child(PRIMARY_KEY).addValueEventListener(oneTimeListener);
+        //To update each memeber details in member list
+        each_memberListener=new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        mStorageRef.child("members").child(PRIMARY_KEY).addChildEventListener(constantListener);
+
+                Userprofile up = dataSnapshot.getValue(Userprofile.class);
+                BAClevel=up.memberBAC;
+                String name=up.fullName;
+
+
+                dataModel.put(BAClevel,name);
+                //listView.deferNotifyDataSetChanged();
+
+                ListAdapter listAdapter = new CustomMemberListAdapter(ExistingCircle.this,R.layout.member_list_item,dataModel);
+                listView.deferNotifyDataSetChanged();
+                listView.setAdapter(listAdapter);
+                Log.d("liseen", dataModel.toString());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+
+            }
+        };
+
+
+        mStorageRef.child("circles").child(PRIMARY_KEY).addValueEventListener(circleDetailsListener);
+
+        mStorageRef.child("members").child(PRIMARY_KEY).addChildEventListener(generate_membersListener);
+
+
+    }
+    public void onClickJoin(View view) {
+
+
+        final String current_userid="2";
+
+        //add user and ask for volunteer
+        mStorageRef.child("members").child(PRIMARY_KEY).push().setValue(current_userid);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(R.string.askvolunteer);
+                alertDialogBuilder.setPositiveButton("yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                //update as volunteer for circle
+                                mStorageRef.child("circles").child(PRIMARY_KEY).child("volunteer").setValue(current_userid);
+
+                            }
+                        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                finish();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        //update list
+        listView.deferNotifyDataSetChanged();
+
+    }
+
+    public void onClickShare(View view) {
+
+        Intent openmap=new Intent(Intent.ACTION_VIEW,Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps"));
+        startActivity(openmap);
+    }
+    public void onClickBook(View view){
+
+        Intent openmap=new Intent(Intent.ACTION_VIEW,Uri.parse("https://m.uber.com/ul/?action=setPickup"));
+        startActivity(openmap);
+
+    }
+    public void onClickNotify(View view){
+
+        final String current_userid="2";
+
+        //update alert in firebase
+        mStorageRef.child("user profile").child(current_userid).child("alert").setValue("yes");
     }
 
     @Override
@@ -124,16 +240,20 @@ public class ExistingCircle extends AppCompatActivity {
         super.onStop();
 
         // Remove post value event listener
-        if (oneTimeListener != null) {
+        if (circleDetailsListener != null) {
             //mStorageRef1
-            mStorageRef.child("circles").child(PRIMARY_KEY).removeEventListener(oneTimeListener);
+            mStorageRef.child("circles").child(PRIMARY_KEY).removeEventListener(circleDetailsListener);
         }
 
-        if (constantListener != null) {
+        if (generate_membersListener != null) {
             //mStorageRef2
-            mStorageRef.child("members").child(PRIMARY_KEY).removeEventListener(constantListener);
+            mStorageRef.child("members").child(PRIMARY_KEY).removeEventListener(generate_membersListener);
         }
 
+        if (each_memberListener != null) {
+            //mStorageRef2
+            mStorageRef.child("user profile").child(PRIMARY_KEY).removeEventListener(each_memberListener);
+        }
 
 
     }

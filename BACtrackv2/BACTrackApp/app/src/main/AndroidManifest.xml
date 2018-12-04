@@ -66,7 +66,10 @@
         </activity>
         <activity android:name=".ViewCircles" />
         <activity android:name=".NewCircle" />
-        <activity android:name=".ExistingCircle"></activity>
+        <activity android:name=".ExistingCircle" />
+        <activity android:name=".AskCircles" />
+        <activity android:name=".Current_location" />
+        <activity android:name=".Member_Status"></activity>
     </application>
 
 </manifest>

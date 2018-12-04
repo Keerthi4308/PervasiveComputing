@@ -14,18 +14,21 @@
         android:id="@+id/circles_list"
         android:layout_width="match_parent"
         android:layout_height="459dp"
+        android:layout_marginLeft="16px"
+        android:layout_marginRight="8px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="163dp"
+        android:layout_width="230dp"
         android:layout_height="47dp"
         android:layout_above="@+id/circles_list"
         android:layout_alignParentStart="true"
         android:text="@string/CIRCLE_TITLE"
         android:textAlignment="textStart"
-        android:textSize="18sp" />
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_large" />
 
     <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/myFAB"-->
@@ -43,7 +46,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="19dp"
         android:clickable="true"
-        app:backgroundTint="@android:color/transparent"
+        android:tint="@android:color/holo_green_dark"
+        app:backgroundTint="@android:color/holo_orange_light"
+        app:elevation="7dp"
+        app:rippleColor="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <!--</android.support.constraint.ConstraintLayout>-->

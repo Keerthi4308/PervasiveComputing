@@ -7,10 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_weight="40"
-        android:gravity="center"
         android:layout_marginTop="5dp"
         android:text="@string/EMPTY_STRING"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/text_small"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_large"
         xmlns:android="http://schemas.android.com/apk/res/android" />
 <!--</android.support.constraint.ConstraintLayout>-->
+<!--android:gravity="center"-->

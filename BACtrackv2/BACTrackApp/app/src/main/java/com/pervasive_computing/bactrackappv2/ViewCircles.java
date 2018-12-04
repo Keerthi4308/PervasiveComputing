@@ -1,4 +1,7 @@
 package com.pervasive_computing.bactrackappv2;
+/*
+  Created by Keerthi on 11/27/2018.
+ */
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -31,6 +34,8 @@ public class ViewCircles extends AppCompatActivity {
     private HashMap<String,String> circles_dict=new HashMap<>();
     FloatingActionButton fb;
     ListView listView;
+    ListAdapter listAdapter;
+    boolean initialDataLoaded;
     Query query;
     //private static CustomAdapter adapter;
     private ChildEventListener constantListener;
@@ -56,17 +61,22 @@ public class ViewCircles extends AppCompatActivity {
     public void onStart(){
         super.onStart();
 
-        constantListener = new ChildEventListener() {
+        //initialDataLoaded=false;
+          constantListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+                if(! initialDataLoaded) {
 
-                CircleDetails cval = dataSnapshot.getValue(CircleDetails.class);
-                String ckey=dataSnapshot.getKey();
-                circles.add(cval.name);
-                circles_dict.put(cval.name,ckey);
-                ListAdapter listAdapter=new ArrayAdapter<String>(ViewCircles.this,R.layout.simple_list_item,circles);
-                listView.setAdapter(listAdapter);
+                    CircleDetails cval = dataSnapshot.getValue(CircleDetails.class);
+                    String ckey = dataSnapshot.getKey();
+                    circles.add(cval.name);
+                    circles_dict.put(cval.name, ckey);
+                    listAdapter = new ArrayAdapter<String>(ViewCircles.this, R.layout.simple_list_item, circles);
+                    listView.setAdapter(listAdapter);
+
+                }
+
             }
 
             @Override
@@ -104,7 +114,6 @@ public class ViewCircles extends AppCompatActivity {
                    Intent intent = new Intent(ViewCircles.this, ExistingCircle.class);
                    intent.putExtra("CIRCLE_ID", circles_id);
                    startActivity(intent);
-                   listView.setAdapter(null);
 
                }
            });
@@ -112,13 +121,37 @@ public class ViewCircles extends AppCompatActivity {
 
     @Override
     public void onStop() {
+
         super.onStop();
 
         if (constantListener != null) {
             mStorageRef.removeEventListener(constantListener);
-            listView.setAdapter(null);
         }
 
 
+
     }
+//
+    @Override
+    public void onResume() {
+        // super.onPause();
+        super.onResume();
+
+        circles.clear();
+        //collection.clear();
+        //listAdapter.notifyDataSetChanged();
+        listView.deferNotifyDataSetChanged();
+     //((ArrayAdapter) listAdapter).notifyDataSetChanged();
+        //initialDataLoaded = true;
+
+    }
+
+//    @Override
+//    public void onPause() {
+//        // super.onPause();
+//
+//
+//        listView.setAdapter(null);
+//        super.onPause();
+//    }
 }
